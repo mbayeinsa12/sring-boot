@@ -1,0 +1,33 @@
+
+
+<div class="border border-primary rounded-3 mx-2 p-2 ">
+
+
+  <div>Details Enseignant</div>
+  <div>
+    <img src="/images/jude.png" class="photo-profil "><br>
+    <span class="gs-form-label">id   </span> :
+    <span class="gs-form-output-value">{{enseignant.id}}</span><br>
+
+    <span class="gs-form-label">nom  </span> :
+    <span class="gs-form-output-value">{{enseignant.nom}}</span><br>
+
+    <span class="gs-form-label">prenom  </span> :
+    <span class="gs-form-output-value">{{enseignant.prenom}}</span><br>
+
+
+    <ng-container *ngIf="enseignant.matieres">
+      <span class="gs-form-label" >matieres   </span> :
+      <span class="gs-form-output-value">{{enseignant.matieres}}</span>
+    </ng-container>
+
+  </div>
+  <div class=" mt-2">
+
+    <button class="btn btn-link">Voir details</button>
+    <button class="btn btn-outline-primary mx-2">Modifier</button>
+    <button class="btn btn-outline-danger">Supprimer</button>
+
+  </div>
+
+</div>

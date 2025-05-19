@@ -1,0 +1,32 @@
+<div>
+  <div class="apprenant">Liste des enseignants</div>
+  <div class=" border border-primary">
+    <div *ngFor="let e of enseignants" class="border border-primary mx-2 p-2  " >
+
+      <span class="gs-form-label">Id</span> :
+      <span class="gs-form-output-value">{{e.id}}</span><br>
+
+      <span class="gs-form-label">Prenom</span> :
+      <span class="gs-form-output-value">{{e.prenom}}</span><br>
+
+      <span class="gs-form-label">Nom</span> :
+      <span class="gs-form-output-value">{{e.nom}}</span><br>
+
+      <span class="gs-form-label">Matieres</span> :
+      <span class="gs-form-output-value">{{e.matieres}}</span>
+
+      <div class=" mt-2">
+
+        <button class="btn btn-link">Voir details</button>
+        <button class="btn btn-outline-primary mx-2">Modifier</button>
+        <button class="btn btn-outline-danger">Supprimer</button>
+
+      </div>
+
+    </div>
+
+
+
+
+  </div>
+</div>
