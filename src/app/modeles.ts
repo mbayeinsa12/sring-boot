@@ -7,11 +7,13 @@ export interface Apprenant{
 }
 
 export interface Enseignant{
+
   id ?: number,
   nom: string,
   prenom: string,
   matieres:string,
   Images?: string;
+  image: string;
 
 }
 

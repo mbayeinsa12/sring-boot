@@ -1,31 +1,30 @@
-
-
 <div class="border border-primary rounded-3 mx-2 p-2 ">
 
 
-  <div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>
-  <div>Details apprenants</div>
-  <div *ngIf="apprenant">
-    <img src="/images/img_1.png" class="photo-profil "><br>
-    <span class="gs-form-label">id   </span> :
-    <span class="gs-form-output-value">{{apprenant.id}}</span><br>
+    <div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>
+    <div>Details apprenants</div>
+    <div *ngIf="apprenant">
+        <img *ngIf="apprenant.image" src="/images/img_1.png" class="photo-profil "><br>
+        <img *ngIf="!apprenant.image" src="/images/icone.png" class="photo-profil "><br>
+        <span class="gs-form-label">id   </span> :
+        <span class="gs-form-output-value">{{apprenant.id}}</span><br>
 
-    <span class="gs-form-label">nom  </span> :
-    <span class="gs-form-output-value">{{apprenant?.nom}}</span><br>
+        <span class="gs-form-label">nom  </span> :
+        <span class="gs-form-output-value">{{apprenant?.nom}}</span><br>
 
-    <span class="gs-form-label">prenom  </span> :
-    <span class="gs-form-output-value">{{apprenant?.prenom}}</span><br>
+        <span class="gs-form-label">prenom  </span> :
+        <span class="gs-form-output-value">{{apprenant?.prenom}}</span><br>
 
-    <span class="gs-form-label">promo  </span> :
-    <span class="gs-form-output-value">{{apprenant?.promo==5?'Meme promo':apprenant.promo}}</span>
+        <span class="gs-form-label">promo  </span> :
+        <span class="gs-form-output-value">{{apprenant?.promo==5?'Meme promo':apprenant.promo}}</span>
 
-  </div>
-  <div class=" mt-2">
+    </div>
+    <div class=" mt-2">
 
-    <button class="btn btn-link">Voir details</button>
-    <button class="btn btn-outline-primary mx-2">Modifier</button>
-    <button class="btn btn-outline-danger">Supprimer</button>
+        <button class="btn btn-link">Voir details</button>
+        <button class="btn btn-outline-primary mx-2">Modifier</button>
+        <button class="btn btn-outline-danger">Supprimer</button>
 
-  </div>
+    </div>
 
 </div>

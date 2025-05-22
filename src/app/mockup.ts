@@ -28,19 +28,22 @@ export const ENSEIGNANTS: Enseignant[] = [
     "id": 1,
     "nom": "Mbaye",
     "prenom": "Abdoulaye",
-    "matieres": "Java"
+    "matieres": "Java",
+    image:"image"
   },
   {
     "id": 2,
     "nom": "Koundoul",
     "prenom": "Birane",
-    "matieres": "Php"
+    "matieres": "Php",
+    image:"image"
   },
   {
     "id": 3,
     "nom": "Ndiaye",
     "prenom": "ALamine",
-    "matieres": "JEE"
+    "matieres": "JEE",
+    image:"image"
   }
 
 ]
