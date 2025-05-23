@@ -1,13 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {Apprenant} from '../modeles';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import {NgIf} from '@angular/common';
 import {ApprenantsService} from '../services/apprenants.service';
 
 @Component({
   selector: 'app-details-apprenant',
   imports: [
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './details-apprenant.component.html',
   styleUrl: './details-apprenant.component.scss'
@@ -18,7 +19,7 @@ export class DetailsApprenantComponent implements  OnInit {
 
   constructor(private route: ActivatedRoute,
 
-              private apprenantsService: ApprenantsService) {
+              private apprenantsService: ApprenantsService,private router: Router) {
     // this.apprenant = this.apprrenantService.getApprenantById(id);
     // console.log('apprenant:', this.apprenant);
   }
@@ -44,7 +45,25 @@ export class DetailsApprenantComponent implements  OnInit {
         }
       })
     }
+  }
+  deleteApprenant(id:number | undefined){
 
+    if(id){
+      this.apprenantsService.deleteApprenantById(id).subscribe({
+        error:(error)=>{
+          if(error.status === 0){
+            this.errorMessage = 'Probleme de connexion avec le serveur.';
+          }else{
+            this.errorMessage=`Erreur de suppression de l'apprenant dont l'id est :${id},code : ${error.status};message:${error.errors}`;
+          }
+        },
+        complete: () => {
+          this.router.navigate(['/liste-apprenants']);
+        }
+      })
+    }else{
+      alert("pas d'id en parametre")
+    }
 
   }
 }

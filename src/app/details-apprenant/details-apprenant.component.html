@@ -2,7 +2,9 @@
 
 
     <div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>
-    <div>Details apprenants</div>
+    <div class="apprenant">Details apprenants</div>
+
+  <div *ngIf="apprenant">
     <div *ngIf="apprenant">
         <img *ngIf="apprenant.image" src="/images/img_1.png" class="photo-profil "><br>
         <img *ngIf="!apprenant.image" src="/images/icone.png" class="photo-profil "><br>
@@ -23,8 +25,33 @@
 
         <button class="btn btn-link">Voir details</button>
         <button class="btn btn-outline-primary mx-2">Modifier</button>
-        <button class="btn btn-outline-danger">Supprimer</button>
+        <button class="btn btn-link" routerLink="/liste-apprenants">Retourner a la liste des apprenants</button>
+
+      <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#suppAppModal">
+        Supprimer
+      </button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="suppAppModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Vous vous supprimer l'apprenant <span class="text-danger"> {{apprenant?.prenom}} {{apprenant?.nom}}</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nom</button>
+              <button type="button" class="btn btn-danger" (click)="deleteApprenant(apprenant?.id)">Supprimer</button>
+            </div>
+          </div>
+        </div>
+      </div>
 
     </div>
 
+</div>
 </div>

@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Enseignant } from '../modeles';
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { NgIf } from '@angular/common';
 import { EnseignantsService } from '../services/enseignants.service';
 
 @Component({
   selector: 'app-detail-enseignant',
   imports: [
-    NgIf
+    NgIf,
+    RouterLink
   ],
   templateUrl: './detail-enseignant.component.html',
   styleUrl: './detail-enseignant.component.scss'
@@ -18,7 +19,7 @@ export class DetailEnseignantComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private enseignantService: EnseignantsService
+    private enseignantService: EnseignantsService,private router:Router,
   ) {}
 
   ngOnInit(): void {
@@ -42,6 +43,23 @@ export class DetailEnseignantComponent implements OnInit {
           // Optionnel : actions à la fin du chargement
         }
       });
+    }
+  }
+
+  deleteEnseignant(id: number | undefined){
+    if(id){
+      this.enseignantService.deleteEnseignantById(id).subscribe({
+        error:(error)=>{
+          if(error.status === 0){
+            this.errorMessage = 'Probleme de connexion avec le serveur.';
+          }else{
+            this.errorMessage=`Erreur de suppression de l'enseignant dont l'id est :${id},code : ${error.status};message:${error.errors}`;
+          }
+        },
+        complete: () => {
+          this.router.navigate(['/liste-enseignants']);
+        }
+      })
     }
   }
 }

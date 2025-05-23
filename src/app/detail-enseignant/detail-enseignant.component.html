@@ -2,12 +2,13 @@
 
     <div *ngIf="errorMessage" class="text-danger">{{errorMessage}}</div>
 
-    <div>Details Enseignant</div>
-    <div *ngIf="enseignant">
+    <div class="apprenant">Details Enseignant</div>
+   <div *ngIf="enseignant">
+<!--    <div *ngIf="enseignant">-->
         <img *ngIf="enseignant.image" src="/images/img_1.png" class="photo-profil "><br>
         <img *ngIf="!enseignant.image" src="/images/icone.png" class="photo-profil "><br>
         <div>
-            <img src="/images/jude.png" class="photo-profil "><br>
+<!--            <img src="/images/jude.png" class="photo-profil "><br>-->
             <span class="gs-form-label">id   </span> :
             <span class="gs-form-output-value">{{enseignant.id}}</span><br>
 
@@ -28,7 +29,32 @@
 
             <button class="btn btn-link">Voir details</button>
             <button class="btn btn-outline-primary mx-2">Modifier</button>
-            <button class="btn btn-outline-danger">Supprimer</button>
+          <button class="btn btn-link" routerLink="/liste-enseignants">Retourner a la liste des enseignants</button>
+
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#suppAppModal">
+            Supprimer
+          </button>
+
+          <!-- Modal -->
+          <div class="modal fade" id="suppAppModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                  Vous vous supprimer l'apprenant <span class="text-danger"> {{enseignant?.prenom}} {{enseignant?.nom}}</span>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" (click)="deleteEnseignant(enseignant?.id)">Supprimer</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
         </div>
     </div>
+   </div>

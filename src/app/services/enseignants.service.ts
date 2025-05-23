@@ -20,4 +20,9 @@ export class EnseignantsService {
     return this._http.get<Enseignant>(url);
   }
 
+  deleteEnseignantById(id: number):Observable<void>{
+    const url =`http://localhost:8081/enseignants/${id}`;
+    return this._http.delete<void>(url);
+  }
+
 }

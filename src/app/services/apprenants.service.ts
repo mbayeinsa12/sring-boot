@@ -25,4 +25,9 @@ export class ApprenantsService {
     // const url = this.urlListeApprenants + '/' + idApprenant
     return this._http.get<Apprenant>(url);
   }
+
+  deleteApprenantById(id: number):Observable<void>{
+    const url =`http://localhost:8081/apprenants/${id}`;
+    return this._http.delete<void>(url);
+  }
 }
