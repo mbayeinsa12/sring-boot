@@ -1,25 +1,41 @@
 <div>
   <div class="apprenant">Liste des enseignants</div>
+  <div *ngIf="finChargement == false">
+    <img src="/images/loading.gif" width="50px" alt="Chargement des enseignants">
+  </div>
+  <div class="text-danger" *ngIf="errorMessage">{{errorMessage}}</div>
   <div class=" border border-primary">
-    <div *ngFor="let e of enseignants" class="border border-primary mx-2 p-2  " >
+    <div *ngFor="let a of enseignants"
+         class="border border-primary mx-2 p-2  "
+         (click)="setselectedEnseignant(a?.id)"
+         [class.selectedDivItem]="a.id == selectEnseignant"
+         [class.overDivItem]="a.id == overEnseignant"
+         (mouseover)="setselectedEnseignant(a?.id)"
+    >
+      <div>selectedApprenant:{{selectEnseignant}}</div>
+      <div>overApprenant:{{overEnseignant}}</div>
+
+      <div>{{selectEnseignant}}</div>
 
       <span class="gs-form-label">Id</span> :
-      <span class="gs-form-output-value">{{e.id}}</span><br>
+      <span class="gs-form-output-value">{{a.id}}</span><br>
 
       <span class="gs-form-label">Prenom</span> :
-      <span class="gs-form-output-value">{{e.prenom}}</span><br>
+      <span class="gs-form-output-value">{{a.prenom}}</span><br>
 
       <span class="gs-form-label">Nom</span> :
-      <span class="gs-form-output-value">{{e.nom}}</span><br>
+      <span class="gs-form-output-value">{{a.nom}}</span><br>
 
       <span class="gs-form-label">Matieres</span> :
-      <span class="gs-form-output-value">{{e.matieres}}</span>
+      <span class="gs-form-output-value">{{a.matieres}}</span>
 
       <div class=" mt-2">
 
-        <button class="btn btn-link">Voir details</button>
-        <button class="btn btn-outline-primary mx-2">Modifier</button>
-        <button class="btn btn-outline-danger">Supprimer</button>
+        <button class="btn btn-link"
+                [routerLink]="['/details-enseignant',a.id]"
+        >Voir details</button>
+<!--        <button class="btn btn-outline-primary mx-2">Modifier</button>-->
+<!--        <button class="btn btn-outline-danger">Supprimer</button>-->
 
       </div>
 
